@@ -22,7 +22,12 @@ public class PlayerController : MonoBehaviour
     {
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+        change.Normalize();
+        
+    }
 
+    private void FixedUpdate()
+    {
         if (change != Vector2.zero)
         {
             Vector2 position = physicsBody.position;
