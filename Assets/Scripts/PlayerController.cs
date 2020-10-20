@@ -53,7 +53,8 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(
                    physicsBody.position,
                    lookDirection,
-                   1.5f);
+                   1.5f,
+                   ~LayerMask.GetMask("Player"));
             if (hit.collider==null && inventory.Count > 0)
             {
                 GameObject go = (GameObject)inventory[0];
