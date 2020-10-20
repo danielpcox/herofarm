@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D physicsBody;
 
     private ArrayList inventory = new ArrayList();
+    public int inventoryCapacity;
 
     void Start()
     {
@@ -29,27 +30,34 @@ public class PlayerController : MonoBehaviour
             lookDirection = change;
         }
 
+        // Slurp into inventory
         if (Input.GetKeyDown(KeyCode.X))
         {
             RaycastHit2D hit = Physics2D.Raycast(
-                physicsBody.position + Vector2.up * 0.2f,
+                physicsBody.position,
                 lookDirection,
                 1.5f,
                 LayerMask.GetMask("Collectibles"));
-            if (hit.collider != null)
+            if (hit.collider!=null && inventory.Count < inventoryCapacity)
             {
                 GameObject go = hit.collider.gameObject;
                 Debug.Log(go.name);
-                inventory.Add(go);
                 go.SetActive(false);
+                inventory.Add(go);
             }
         }
 
+        // Dump from inventory
         if (Input.GetKeyDown(KeyCode.C))
         {
-            if (inventory.Count > 0)
+            RaycastHit2D hit = Physics2D.Raycast(
+                   physicsBody.position,
+                   lookDirection,
+                   1.5f);
+            if (hit.collider==null && inventory.Count > 0)
             {
                 GameObject go = (GameObject)inventory[0];
+                go.transform.position = physicsBody.position + lookDirection * 1.5f;
                 go.SetActive(true);
                 inventory.RemoveAt(0);
             }
