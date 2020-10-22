@@ -11,13 +11,16 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D physicsBody;
 
-    private ArrayList inventory = new ArrayList();
-    public int inventoryCapacity;
+    public InventoryDisplay inventoryDisplay;
+    public static int inventoryCapacity = 10;
+    private GameObject[] inventory; // = new GameObject[inventoryCapacity];
+    private int inventoryCursor = 0;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         physicsBody = GetComponent<Rigidbody2D>();
+        inventory = new GameObject[inventoryDisplay.images.Length];
     }
 
     void Update()
@@ -32,38 +35,46 @@ public class PlayerController : MonoBehaviour
         }
 
         // Slurp into inventory
-        if (Input.GetKeyDown(KeyCode.X))
+        if (Input.GetKeyDown(KeyCode.X) && inventory[inventoryCursor]==null)
         {
             RaycastHit2D hit = Physics2D.Raycast(
                 physicsBody.position,
                 lookDirection,
                 1.5f,
                 LayerMask.GetMask("Collectibles"));
-            if (hit.collider!=null && inventory.Count < inventoryCapacity)
+            if (hit.collider!=null)
             {
                 GameObject go = hit.collider.gameObject;
-                Debug.Log(go.name);
+                Debug.Log($"Adding to inventory: {go.name}");
                 go.SetActive(false);
-                inventory.Add(go);
+                inventory[inventoryCursor] = go;
+                inventoryDisplay.PlaceAt(inventoryCursor, go);
             }
         }
 
         // Dump from inventory
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C) && inventory[inventoryCursor]!=null)
         {
             RaycastHit2D hit = Physics2D.Raycast(
                    physicsBody.position,
                    lookDirection,
                    1.5f,
                    ~LayerMask.GetMask("Player"));
-            if (hit.collider==null && inventory.Count > 0)
+            if (hit.collider==null)
             {
-                GameObject go = (GameObject)inventory[0];
+                GameObject go = inventory[inventoryCursor];
                 go.transform.position = physicsBody.position + lookDirection * 1.5f;
                 go.SetActive(true);
-                inventory.RemoveAt(0);
+                inventory[inventoryCursor] = null;
+                inventoryDisplay.ClearAt(inventoryCursor);
             }
         }
+
+        // Move cursor
+        if (Input.GetKeyDown(KeyCode.E))
+            DecrementInventoryCursor();
+        if (Input.GetKeyDown(KeyCode.R))
+            IncrementInventoryCursor();
     }
 
     private void FixedUpdate()
@@ -81,5 +92,21 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("Moving", false);
         }
+    }
+
+
+    // TODO move the whole inventory system into a ScriptableObject
+    private void IncrementInventoryCursor()
+    {
+        if (inventoryCursor < inventoryCapacity - 1)
+            inventoryCursor++;
+        Debug.Log($"inventoryCursor: {inventoryCursor}");
+    }
+
+    private void DecrementInventoryCursor()
+    {
+        if (inventoryCursor > 0)
+            inventoryCursor--;
+        Debug.Log($"inventoryCursor: {inventoryCursor}");
     }
 }
