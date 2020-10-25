@@ -99,14 +99,18 @@ public class PlayerController : MonoBehaviour
     private void IncrementInventoryCursor()
     {
         if (inventoryCursor < inventoryCapacity - 1)
-            inventoryCursor++;
+        {
+            inventoryDisplay.CursorAt(++inventoryCursor);
+        }
         Debug.Log($"inventoryCursor: {inventoryCursor}");
     }
 
     private void DecrementInventoryCursor()
     {
         if (inventoryCursor > 0)
-            inventoryCursor--;
-        Debug.Log($"inventoryCursor: {inventoryCursor}");
+        {
+            inventoryDisplay.CursorAt(--inventoryCursor);
+
+        }
     }
 }
