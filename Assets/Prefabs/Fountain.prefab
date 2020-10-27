@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4403669692508400092}
   - component: {fileID: 4403669692508400083}
   - component: {fileID: 4403669692508400082}
-  - component: {fileID: 4403669692508400093}
+  - component: {fileID: 630278506}
   m_Layer: 0
   m_Name: Fountain
   m_TagString: Untagged
@@ -103,8 +103,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &4403669692508400093
-BoxCollider2D:
+--- !u!70 &630278506
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -116,16 +116,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.09212899}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
-    newSize: {x: 3, y: 3}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 2.815742}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0.0070326454, y: 0.09845138}
+  m_Size: {x: 3.070323, y: 2.8593674}
+  m_Direction: 1
