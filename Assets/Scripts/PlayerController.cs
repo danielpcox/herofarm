@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,14 +14,21 @@ public class PlayerController : MonoBehaviour
 
     public InventoryDisplay inventoryDisplay;
     public static int inventoryCapacity = 10;
-    private GameObject[] inventory; // = new GameObject[inventoryCapacity];
+    private GameObject[] inventory;
     private int inventoryCursor = 0;
+
+    public float maxEnergy;
+    private float energy;
+    public Slider energyDisplay;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         physicsBody = GetComponent<Rigidbody2D>();
         inventory = new GameObject[inventoryDisplay.images.Length];
+
+        energy = maxEnergy / 2;
+        energyDisplay.value = energy / maxEnergy;
     }
 
     void Update()
@@ -83,6 +91,19 @@ public class PlayerController : MonoBehaviour
             DecrementInventoryCursor();
         if (Input.GetKeyDown(KeyCode.R))
             IncrementInventoryCursor();
+
+        // Eat food
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            GameObject item = inventory[inventoryCursor];
+            Food food = item.GetComponent<Food>();
+            if (food != null)
+            {
+                food.Eat(this);
+                inventoryDisplay.ClearAt(inventoryCursor);
+                Destroy(item);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -120,5 +141,13 @@ public class PlayerController : MonoBehaviour
             inventoryDisplay.CursorAt(--inventoryCursor);
 
         }
+    }
+
+
+
+    public void ChangeEnergy(float amount)
+    {
+        energy = Mathf.Clamp(energy+amount, 0, maxEnergy);
+        energyDisplay.value = energy / maxEnergy;
     }
 }

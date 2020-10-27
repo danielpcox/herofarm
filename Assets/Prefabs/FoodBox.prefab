@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3873378597315541546}
   - component: {fileID: 3873378597315541549}
   - component: {fileID: -5292180372622238037}
+  - component: {fileID: 8760181108009620038}
   m_Layer: 8
   m_Name: FoodBox
   m_TagString: Untagged
@@ -109,3 +110,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
+--- !u!114 &8760181108009620038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3873378597315541548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48d1d1ff3b4c24470a595c88a0de37f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
