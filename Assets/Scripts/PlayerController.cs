@@ -35,21 +35,29 @@ public class PlayerController : MonoBehaviour
         }
 
         // Slurp into inventory
-        if (Input.GetKeyDown(KeyCode.X) && inventory[inventoryCursor]==null)
+        if (Input.GetKeyDown(KeyCode.X))
         {
             RaycastHit2D hit = Physics2D.Raycast(
-                physicsBody.position,
-                lookDirection,
-                1.5f,
-                LayerMask.GetMask("Collectibles"));
-            if (hit.collider!=null)
+                   physicsBody.position,
+                   lookDirection,
+                   1.5f,
+                   LayerMask.GetMask("Collectibles"));
+            if (hit.collider != null)
             {
-                GameObject go = hit.collider.gameObject;
-                Debug.Log($"Adding to inventory: {go.name}");
-                go.SetActive(false);
-                inventory[inventoryCursor] = go;
-                inventoryDisplay.PlaceAt(inventoryCursor, go);
+
+                for (int i = 0; i < inventory.Length; i++)
+                {
+                    if (inventory[i] == null)
+                    {
+                        GameObject go = hit.collider.gameObject;
+                        go.SetActive(false);
+                        inventory[i] = go;
+                        inventoryDisplay.PlaceAt(i, go);
+                        break;
+                    }
+                }
             }
+            
         }
 
         // Dump from inventory
