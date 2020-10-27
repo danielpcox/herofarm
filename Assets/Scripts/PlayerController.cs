@@ -131,7 +131,6 @@ public class PlayerController : MonoBehaviour
         {
             inventoryDisplay.CursorAt(++inventoryCursor);
         }
-        Debug.Log($"inventoryCursor: {inventoryCursor}");
     }
 
     private void DecrementInventoryCursor()
@@ -139,7 +138,6 @@ public class PlayerController : MonoBehaviour
         if (inventoryCursor > 0)
         {
             inventoryDisplay.CursorAt(--inventoryCursor);
-
         }
     }
 
