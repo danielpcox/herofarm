@@ -151,25 +151,25 @@ TextureImporter:
     second: objects_48
   - first:
       213: 3482744526424367930
-    second: objects_49
+    second: fire1
   - first:
       213: 138822527552902627
-    second: objects_50
+    second: fire2
   - first:
       213: -2336223751096622429
-    second: objects_51
+    second: fire3
   - first:
       213: -6188367394728635080
-    second: objects_52
+    second: fire4
   - first:
       213: 6465271316976419069
-    second: objects_53
+    second: fire5
   - first:
       213: -5262628193677242302
-    second: objects_54
+    second: fire6
   - first:
       213: 901927284399968204
-    second: objects_55
+    second: fire7
   - first:
       213: -8076552262776366635
     second: objects_56
@@ -2192,13 +2192,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_49
+      name: fire1
       rect:
         serializedVersion: 2
-        x: 65
-        y: 246
-        width: 13
-        height: 25
+        x: 64
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2213,13 +2213,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_50
+      name: fire2
       rect:
         serializedVersion: 2
-        x: 81
-        y: 248
-        width: 14
-        height: 23
+        x: 80
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2234,13 +2234,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_51
+      name: fire3
       rect:
         serializedVersion: 2
-        x: 97
-        y: 247
-        width: 14
-        height: 25
+        x: 96
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2255,13 +2255,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_52
+      name: fire4
       rect:
         serializedVersion: 2
-        x: 113
-        y: 246
-        width: 14
-        height: 25
+        x: 112
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2276,13 +2276,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_53
+      name: fire5
       rect:
         serializedVersion: 2
         x: 128
-        y: 252
-        width: 15
-        height: 22
+        y: 256
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2297,12 +2297,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_54
+      name: fire6
       rect:
         serializedVersion: 2
-        x: 145
+        x: 144
         y: 256
-        width: 14
+        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -2318,13 +2318,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: objects_55
+      name: fire7
       rect:
         serializedVersion: 2
-        x: 161
+        x: 160
         y: 256
-        width: 14
-        height: 15
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
